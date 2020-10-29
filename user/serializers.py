@@ -1,3 +1,7 @@
+"""
+author: Sanidhya Mangal
+github: sanidhyamangal
+"""
 from .models import User
 from rest_framework import serializers
 

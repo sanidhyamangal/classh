@@ -1,3 +1,7 @@
+"""
+author: Sanidhya Mangal
+github: sanidhyamangal
+"""
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.validators import ValidationError

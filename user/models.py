@@ -1,3 +1,7 @@
+"""
+author: Sanidhya Mangal
+github: sanidhyamangal
+"""
 from django.db import models
 from base.models import BaseModel
 from django.contrib.auth.models import UserManager, AbstractUser
