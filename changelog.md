@@ -10,3 +10,4 @@
 - added: forgot password and rest forgot password serializer
 - added: forgot password and verify user models
 - added: verify user functionality
+- added: basic skeleton for followers profile
