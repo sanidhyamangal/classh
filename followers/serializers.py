@@ -8,7 +8,7 @@ class FollowersSerializer(serializers.ModelSerializer):
         fields = ['uid', 'user', 'followed_by', 'is_private']
 
 
-class FolloweRequestSerializer(serializers.ModelSerializer):
+class FollowRequestSerializer(serializers.ModelSerializer):
     class Meta:
         model = Followers
         fields = ['uid', 'user', 'requested_by', 'is_private']
