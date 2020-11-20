@@ -22,6 +22,9 @@ class BaseAPIViewSet(ModelViewSet):
     log_activity = True
     logger = None
 
+    def get_queryset(self):
+        return self.model_class.objects.all()
+
     def list(self, request, *args, **kwargs):
         queryset = self.model_class.objects.all()
         serializer = self.serializer_class(queryset, many=True)

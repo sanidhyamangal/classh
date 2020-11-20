@@ -9,13 +9,14 @@ from rest_framework.permissions import AllowAny, IsAdminUser
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .mixins import ForgotPasswordMixin
+from .mixins import ForgotPasswordMixin, UserActionSerializerMixin
 from .models import User, VerifyUser
 from .permissions import AllowAnyPostReadUpdateDestroyOwnerOrAdmin
 from .serializers import UserSerializer
 
 
-class UserViewSet(BaseAPIViewSet, ForgotPasswordMixin):
+class UserViewSet(UserActionSerializerMixin, BaseAPIViewSet,
+                  ForgotPasswordMixin):
     model_class = User
     serializer_class = UserSerializer
     instance_name = "user"

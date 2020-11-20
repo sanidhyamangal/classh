@@ -91,3 +91,20 @@ class ResetForgotPasswordSerializer(serializers.ModelSerializer):
 
         return super(ResetForgotPasswordSerializer,
                      self).update(instance, {'is_used': True})
+
+
+class UserLoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'password')
+
+
+class UserForgotPasswordSwaggerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('email', )
+
+
+class ForgotPasswordResetSwaggerSerializer(serializers.Serializer):
+    password = serializers.CharField()
+    confirm_password = serializers.CharField()

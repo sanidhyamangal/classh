@@ -8,7 +8,21 @@ from rest_framework.response import Response
 
 from .models import ForgotPassword
 from .serializers import (ForgotPasswordSerializer,
-                          ResetForgotPasswordSerializer)
+                          ResetForgotPasswordSerializer, UserSerializer,
+                          UserLoginSerializer,
+                          UserForgotPasswordSwaggerSerializer,
+                          ForgotPasswordResetSwaggerSerializer)
+
+
+class UserActionSerializerMixin:
+    def get_serializer_class(self):
+        if self.action == "login":
+            return UserLoginSerializer
+        if self.action == "forgot_password":
+            return UserForgotPasswordSwaggerSerializer
+        if self.action == "reset_forgot_password":
+            return ForgotPasswordResetSwaggerSerializer
+        return UserSerializer
 
 
 class ForgotPasswordMixin:
