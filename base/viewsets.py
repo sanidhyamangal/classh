@@ -25,9 +25,12 @@ class BaseAPIViewSet(ModelViewSet):
     def get_queryset(self):
         return self.model_class.objects.all()
 
+    def get_serializer_class(self):
+        return self.serializer_class
+
     def list(self, request, *args, **kwargs):
         queryset = self.model_class.objects.all()
-        serializer = self.serializer_class(queryset, many=True)
+        serializer = self.get_serializer(queryset, many=True)
         return Response(
             data={
                 "status": True,
@@ -38,7 +41,7 @@ class BaseAPIViewSet(ModelViewSet):
 
     def create(self, request, *args, **kwargs):
 
-        serializer = self.serializer_class(data=request.data)
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             if self.logger:
@@ -70,7 +73,7 @@ class BaseAPIViewSet(ModelViewSet):
 
     def retrieve(self, request, pk=None, *args, **kwargs):
         obj = self.get_object(pk)
-        serializer = self.serializer_class(obj)
+        serializer = self.get_serializer(obj)
         return Response(
             data={
                 "status": True,
@@ -80,7 +83,7 @@ class BaseAPIViewSet(ModelViewSet):
 
     def update(self, request, pk=None, *args, **kwargs):
         obj = self.get_object(pk)
-        serializer = self.serializer_class(obj, data=request.data)
+        serializer = self.get_serializer(obj, data=request.data)
         if serializer.is_valid():
             serializer.save()
             if self.logger:
@@ -101,9 +104,7 @@ class BaseAPIViewSet(ModelViewSet):
 
     def partial_update(self, request, pk=None, *args, **kwargs):
         obj = self.get_object(pk)
-        serializer = self.serializer_class(obj,
-                                           data=request.data,
-                                           partial=True)
+        serializer = self.get_serializer(obj, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             if self.logger:
