@@ -20,9 +20,9 @@ from rest_framework import permissions
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="INQ Nigeria API",
+        title="Classh",
         default_version='v1',
-        description="API Collection for INQ Nigeria",
+        description="API Collection for reusable components",
         terms_of_service="https://www.google.com/policies/terms/",
         contact=openapi.Contact(email="eb0050@engineerbabu.in"),
         license=openapi.License(name="BSD License"),
@@ -32,6 +32,9 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path('swagger.json',
+         schema_view.without_ui(cache_timeout=0),
+         name='schema-json'),
     path(r'swagger',
          schema_view.with_ui('swagger', cache_timeout=0),
          name='schema-swagger-ui'),

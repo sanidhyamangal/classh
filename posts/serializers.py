@@ -1,6 +1,12 @@
+"""
+author: Sanidhya Mangal
+github: sanidhyamangal
+"""
+
 from rest_framework import serializers
-from .models import Comment, Post
 from user.models import User
+
+from .models import Comment, Post
 
 
 class WritePostSerializer(serializers.ModelSerializer):
@@ -36,3 +42,9 @@ class ListCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         exclude = ('post', )
+
+
+class UpdateCommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('comment', )

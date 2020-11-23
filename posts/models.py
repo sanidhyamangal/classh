@@ -1,6 +1,12 @@
-from django.db import models
+"""
+author: Sanidhya Mangal
+github: sanidhyamangal
+"""
+
 from base.models import BaseModel
 from django.conf import settings
+from django.db import models
+
 # Create your models here.
 
 
