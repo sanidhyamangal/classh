@@ -4,7 +4,6 @@ from user.models import User
 
 
 class WritePostSerializer(serializers.ModelSerializer):
-    # by = serializers.PrimaryKeyRelatedField()
     class Meta:
         model = Post
         fields = ('uid', 'text', 'by', 'media_url')
@@ -18,8 +17,9 @@ class UserPostReadSerializer(serializers.ModelSerializer):
 
 class ReadPostSerializer(serializers.ModelSerializer):
     by = UserPostReadSerializer()
+    likes = UserPostReadSerializer(many=True)
 
     class Meta:
         model = Post
         fields = '__all__'
-        depth = 1
+        # depth = 1
