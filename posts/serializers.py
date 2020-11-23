@@ -22,4 +22,17 @@ class ReadPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
-        # depth = 1
+
+
+class PostCommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
+
+
+class ListCommentSerializer(serializers.ModelSerializer):
+    by = UserPostReadSerializer()
+
+    class Meta:
+        model = Comment
+        exclude = ('post', )
