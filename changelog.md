@@ -15,3 +15,6 @@
 ### 2020-12-19
 - fixed: env to os.env for project running
 - changed: api routes for user from api to user
+
+### 2021-02-03
+- fixed: docker-compose file
