@@ -11,3 +11,7 @@
 - added: forgot password and verify user models
 - added: verify user functionality
 - added: basic skeleton for followers profile
+
+### 2020-12-19
+- fixed: env to os.env for project running
+- changed: api routes for user from api to user

@@ -24,7 +24,7 @@ schema_view = get_schema_view(
         default_version='v1',
         description="API Collection for reusable components",
         terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="eb0050@engineerbabu.in"),
+        contact=openapi.Contact(email="mangalsanidhya19@gmail.com"),
         license=openapi.License(name="BSD License"),
     ),
     public=True,
@@ -41,6 +41,6 @@ urlpatterns = [
     path(r'redoc',
          schema_view.with_ui('redoc', cache_timeout=0),
          name='schema-redoc'),
-    path('api/', include('user.urls')),
+    path('users/', include('user.urls')),
     path('posts/', include('posts.urls'))
 ]
